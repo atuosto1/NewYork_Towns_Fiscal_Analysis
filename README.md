@@ -22,6 +22,12 @@ For definitions of certain expenditures I used the corresponding [Glossary](http
 **public_safety -** total expenditures on public safety services (Police, Fire, EMS)
  **social_services -** total expenditures on public assistance programs (Medicaid, Financial Assistance, Youth Services)
 
+## How to Reproduce
+### Requirements:
+- Stata version 14 or higher
+- "estout" package needed for esttab and eststo functions (run following line if not installed -> ssc install estout, replace)
+### Getting Data:
+I got my data from the Office of the New York State Comptroller's Local Government Bulk Financial Data (linked above and [here](https://wwe1.osc.state.ny.us/localgov/findata/financial-data-for-local-governments.cfm)). In "detailed account-level data" (Scroll down on the link) I selected "Revenue, Expenditure and Balance Sheet Data" then, "Single Class of Government for All Years" and then "Town" in the dropdown menu, after which I downloaded all of the data in a zip file and converted each .csv file to .dta (See methodology step 1). 
 
 ## Methodology
 ### Step 1: Panel Data Construction
@@ -87,14 +93,6 @@ Within the random effects model, all of the sources of revenue are shown to be h
 
 Applying the same framework from column 3 to public safety and social service spending, we get the results seen in the above screenshot. For public safety spending, federal aid and local taxes seem to be the main sources of funding, with two results significant at the 0.1% significance level ($1 in federal aid corresponds with ~ 5 cent increase & $1 in local taxes corresponds with ~ 17 cent increase in public safety spending on average) This finding is intuitive (as more money comes in from both the federal government and local taxes, towns are more able to spend on public safety) and is a magnitude that makes sense. For spending in each year relative to 2013, only two years saw less public safety spending (2014 and 2015) while the remaining years had positive coefficients. The only two years that provide real significant difference are 2022 and 2023. 2022 saw $97,063 more spending than 2013 (significant at 5% level); 2023 experienced $231,862 more spending than 2013 (significant at 0.1% level). 
 Unfortunately no coefficients were statistically significant in changing social services spending, however I will interpret them like they are. Additionally, not all of the towns measured took track of social services spending so the number of observations for this regression is considerably lower than the other two spending metrics. Federal aid and local taxes had very small impacts on overall social services spending, with a difference of less than 1 cent (0.009 dollars = 0.9 cents) and 3 cents respectively. After 2014, there was a trend of higher spending relative to 2013 (2014 is the only year with a negative coefficient, signifying that there was less spending when compared to the reference year of 2013). 2022 saw the highest spread between the reference category, with $209,250 more in spending on social services than 2013.
-
-
-## How to Reproduce
-### Requirements:
-- Stata version 14 or higher
-- "estout" package needed for esttab and eststo functions (run following line if not installed -> ssc install estout, replace)
-### Getting Data:
-I got my data from the Office of the New York State Comptroller's Local Government Bulk Financial Data (linked above and [here](https://wwe1.osc.state.ny.us/localgov/findata/financial-data-for-local-governments.cfm)). In "detailed account-level data" (Scroll down on the link) I selected "Revenue, Expenditure and Balance Sheet Data" then, "Single Class of Government for All Years" and then "Town" in the dropdown menu, after which I downloaded all of the data in a zip file and converted each .csv file to .dta (See methodology step 1). 
 
 ## Planned Extensions
 For the future I would like to include more geographical entities (towns) in my dataset. Whether that involves adding another state's towns or more years I would certainly expand my data in the future. An interesting expansion is to include all 50 states US town to see how spending patterns vary across states and different geographical regions. Another approach is to control for the following variables, with explanations included:
