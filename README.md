@@ -83,7 +83,7 @@ The remaining regressions (where public safety spending and social services spen
 ### Step 7: Graphs
 Plotting some graphs helped to see the trend for each of the three dependent variables over time. A scatter plot showed each individual data point, and an lfit line where spending was averaged for each year proved to show the overall trend clearer.
 
-<img width="1082" height="446" alt="image" src="https://github.com/user-attachments/assets/e685594c-6f53-4bf2-bf31-29801130619d" />
+<img width="854" height="257" alt="image" src="https://github.com/user-attachments/assets/50a95764-1556-45b9-b9ba-987120df1cf3" />
 
 #### Screenshot 7.1
 
