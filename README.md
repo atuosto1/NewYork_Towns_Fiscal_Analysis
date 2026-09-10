@@ -37,50 +37,46 @@ I got my data from the Office of the New York State Comptroller's Local Governme
 ### Step 1: Panel Data Construction
 To begin I appended annual, cross-sectional files into a single panel dataset in STATA. Panel showed each entity's (town) income and expenditure data over 11 years. Since it was only 11 files I decided to convert each .csv file to .dta files by hand, however I would create a loop if expanding this project again.
 
-<img width="1059" height="573" alt="image" src="https://github.com/user-attachments/assets/d6bd2d46-e134-4098-8648-1e8ef6509363" />
+<img width="1805" height="611" alt="image" src="https://github.com/user-attachments/assets/b8c6526b-3c1b-4159-8f04-f14f3fbbcc74" />
 
 #### Screenshot 1.1
 
 ### Step 2: Encoding Variables
 Since the variables were coded as a string, I needed to encode them within STATA. Additionally, I checked how the variables were coded to see which values corresponded with expenditures and revenues, dropped any values that were not expenditures or revenues, saw the coding of the variables once more, dropped any labels that were missing, and then dropped any redundant variables.
 
-<img width="1059" height="573" alt="image" src="https://github.com/user-attachments/assets/d070e96a-0067-416b-8a73-2110b75fd600" />
+<img width="1803" height="647" alt="image" src="https://github.com/user-attachments/assets/81ada03b-4310-4178-ae05-af1396a44d75" />
 
 #### Screenshot 2.1
-
-<img width="1059" height="285" alt="image" src="https://github.com/user-attachments/assets/02453c6c-314f-45b3-adb5-884e4f3b654b" />
-
-##### Screenshot 2.2
 
 ### Step 3: Collapse/Reshape Data
 Initially my data was very long (multiple entries for a given town and year) so I collapsed each revenue and expenditure category into a single item for each entry. Then, I  looked to see how it was coded before reshaping it so that each town and year combination  corresponded to one line full of all of the revenue and expenditure categories. 
 
-<img width="1059" height="227" alt="image" src="https://github.com/user-attachments/assets/8e38dead-4dfd-4d70-b6b0-844adf34e186" />
+<img width="1371" height="200" alt="image" src="https://github.com/user-attachments/assets/6ed1830b-cb06-4878-b7d5-b6c39bf5a7c5" />
 
 #### Screenshot 3.1
 
 ### Step 4: Create Necessary Variables & Declare Panel
-After reshaping my data, I renamed each of the variables into intuitive names. I then generated a variable to sum all the different streams of local tax revenue (local_taxes) and declared to STATA that panel data was being used.
+After reshaping my data, I renamed each of the variables into intuitive names. I then generated a variable to sum all the different streams of local tax revenue (local_taxes) and declared to STATA that panel data was being used (xtset).
 
-<img width="1059" height="358" alt="image" src="https://github.com/user-attachments/assets/45817ad7-6ae9-4042-8ed5-00966534332c" />
+<img width="1710" height="896" alt="image" src="https://github.com/user-attachments/assets/ae2f8c11-a985-415c-8df0-35e23d10eebb" />
 
 #### Screenshot 4.1
 
 ### Step 5: Random Effects Regression + Fixed Effects Regressions (without and with clustered standard errors) 
 The initial random effects regression was done to see the overall average effect that federal/state aid and local taxes had on general government spending. I then ran a two way fixed effects model without clustered standard errors to see how general government spending would be affected while accounting for variations within units (unit fixed effects) and variations that affect all units simultaneously, over time (time fixed effects). I then clustered my standard errors to more accurately estimate the value of them, as clustering accounts for the correlation within general government spending within units: for example one town may consistently spend more than another town, without clustered standard errors this consistent excess spending is treated as multiple entries and ultimately undervalues our standard errors, despite not changing the coefficient of each independent variable. Not clustering may produce inaccurate T-statistics and could ultimately misrepresent the significance of each coefficient. (See screenshot 5.2, red shows the changed standard errors, blue shows changed t-statistics. Regression output on the left is without clustered SE, with clustered SE on the right.) Regressions were then output to a word document using esttab.
 
-<img width="1082" height="452" alt="image" src="https://github.com/user-attachments/assets/28e3500f-0735-4141-9ecc-6ae052e5090d" />
+<img width="1754" height="356" alt="image" src="https://github.com/user-attachments/assets/3a4de592-bb10-46f7-b1ba-b651129df7f2" />
 
 #### Screenshot 5.1
 
-<img width="671" height="247" alt="image" src="https://github.com/user-attachments/assets/cc85ab7b-4a26-47b6-9499-60aa36564abc" />
+<img width="686" height="254" alt="image" src="https://github.com/user-attachments/assets/14f26819-71f0-4cb2-aa33-6e7edf1837ed" />
 
 #### Screenshot 5.2
 
 ### Step 6: Remaining Regressions
 The remaining regressions (where public safety spending and social services spending are the dependent variables respectively) were conducted using the same two-way fixed effects model that was used for general government spending (with clustered standard errors). Regressions were then output onto a word document using esttab.
 
-<img width="1082" height="452" alt="image" src="https://github.com/user-attachments/assets/66bd7f3f-4bbc-4d06-ae68-935d1a6ec096" />
+<img width="1715" height="260" alt="image" src="https://github.com/user-attachments/assets/88ab9ee3-4a61-4727-b9b9-bed11a714b53" />
 
 #### Screenshot 6.1
 
@@ -91,7 +87,7 @@ Plotting some graphs helped to see the trend for each of the three dependent var
 
 #### Screenshot 7.1
 
-<img width="1082" height="467" alt="image" src="https://github.com/user-attachments/assets/e9b5c942-f5c1-4353-b85c-3bc741d49ab0" />
+<img width="787" height="472" alt="image" src="https://github.com/user-attachments/assets/9d35a129-dfa2-4efd-8546-0fd8e37c7db5" />
 
 #### Screenshot 7.2
 
